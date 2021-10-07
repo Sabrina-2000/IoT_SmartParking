@@ -1,20 +1,15 @@
 #include <Servo.h>
-#include <LiquidCrystal_I2C.h>
  
 Servo servo;
 int trigPin = A0;
 int echoPin = A1;
 
-LiquidCrystal_I2C lcd(0x27,20,4);
 unsigned int pinStatus = 0;
 long distance;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  lcd.init();
-  lcd.init();
-  lcd.backlight();
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   servo.attach(2);
