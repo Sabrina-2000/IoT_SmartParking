@@ -1,0 +1,4 @@
+
+
+RFID card: E3 4B B3 18
+RFID TAG: 7A B9 23 3F
