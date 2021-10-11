@@ -108,7 +108,7 @@ void SlotSensor()
     Serial.println("Vechile not detected (ERROR) Pls check!!");
     digitalWrite(lockLed, LOW);
   }
-  else if(distance > 10 && distance <= 20)
+  else if(distance >= 10 && distance <= 20)
   {
     //car leave, parking lock rise
     Serial.println("Leave");
@@ -128,17 +128,19 @@ void SlotSensor2()
   if(digitalRead(button) == LOW && secondslot == 1)
   {
     digitalWrite(lockLed2, HIGH);
-    Serial.println("Slot Sensor2: leave")
+    Serial.println("Slot Sensor2: leave");
     delay(3000);
     digitalWrite(lockLed2, LOW);
+    secondslot = 0;
   }
 
   else if(digitalRead(button) == LOW)
   {
     digitalWrite(lockLed2, HIGH);
-    Serial.println("Slot Sensor2: parked")
+    Serial.println("Slot Sensor2: parked");
     delay(3000);
     digitalWrite(lockLed2, LOW);
+    secondslot = 1;
   }
   
 }
@@ -189,8 +191,8 @@ void reciever()
 
 void loop() {
   // put your main code here, to run repeatedly:
-  //DoorSensor();
-  //reciever();
+  DoorSensor();
+  reciever();
   RFID();
-  
+  SlotSensor2();
 }
