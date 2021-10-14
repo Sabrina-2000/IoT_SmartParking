@@ -15,10 +15,10 @@ camera.resolution = (640, 480)
 camera.framerate = 30
 rawCapture = PiRGBArray(camera, size=(640, 480))
 
-#device = '/dev/ttyUSB0'
-#arduino = serial.Serial(device, 9600)
+device = '/dev/ttyUSB0'
+arduino = serial.Serial(device, 9600)
 display = drivers.Lcd()
-action = 0
+action = "0"
 count = 0
 available = 2
 slots = ["",""]
@@ -30,6 +30,8 @@ def capture():
         cv2.imshow("Frame", image)
         key = cv2.waitKey(1) & 0xFF
         rawCapture.truncate(0)
+        key = action
+        #if int(key) == 1:
         if key == ord("s"):
              gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #convert to grey scale
              gray = cv2.bilateralFilter(gray, 11, 17, 17) #Blur to reduce noise
@@ -79,14 +81,14 @@ while True:
 
     print(data)
     if(data == "Door Sensor"):
-        data = line[13]
+        data = line[13:]
         data = data.decode('UTF-8')
         print(data)
         action = data
+        print("Action: " + action)
         
     display.lcd_display_string("Available:" + str(available), 1)
-    action = "1"
-    if(action == "1"):
+    if(int(action) == 1):
         plate = capture()
         
         display.lcd_clear()
@@ -132,7 +134,9 @@ while True:
         arduino.write(b"2")
         time.sleep(1)
         display.lcd_clear()
+        action = "0"
         
         
 
             
+
