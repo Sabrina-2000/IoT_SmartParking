@@ -66,7 +66,7 @@ void RFID()
   Serial.println();
   Serial.print("Message : ");
   content.toUpperCase();
-  if (content.substring(1) == "8A DA 0A 3F") //change here the UID of the card/cards that you want to give access
+  if (content.substring(1) == "E3 4B B3 18") //change here the UID of the card/cards that you want to give access
   {
     //parking lock dropped down, when RFID tag is valid
     Serial.println("Authorized access");
