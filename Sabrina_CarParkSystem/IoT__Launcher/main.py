@@ -30,7 +30,7 @@ def capture():
         cv2.imshow("Frame", image)
         key = cv2.waitKey(1) & 0xFF
         rawCapture.truncate(0)
-        key = action
+        #key = action
         #if int(key) == 1:
         if key == ord("s"):
              gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #convert to grey scale
