@@ -3,13 +3,12 @@
  
 #define SS_PIN 10
 #define RST_PIN 9
-MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
+MFRC522 mfrc522(SS_PIN, RST_PIN);  
 
 
 
-////////////////////////////////////////////
-//FIRST parking slot (ultrasonic and RFID)//
-////////////////////////////////////////////
+
+//FIRST parking slot (ultrasonic and RFID)
 int trigPin = A0;
 int echoPin = A1;
 int detectionLED = 2;
