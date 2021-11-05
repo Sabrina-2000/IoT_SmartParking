@@ -131,7 +131,7 @@ while True:
             slots[2] = "-"
             available += 1
             count -= 1
-            publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(slots[1]) +'}', hostname="thingsboard.cloud", auth = {'username':"nXNiSJDI52nOQqiTy6F0", 'password':""})
+            publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(slots[2]) +'}', hostname="thingsboard.cloud", auth = {'username':"nXNiSJDI52nOQqiTy6F0", 'password':""})
         
         elif(int(b2status) == 1 and slots[2] == "-"):
             slots[2] = plate
@@ -141,6 +141,23 @@ while True:
             display.lcd_display_string(plate, 2)
             publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(plate) +'}', hostname="thingsboard.cloud", auth = {'username':"nXNiSJDI52nOQqiTy6F0", 'password':""})
         
+	elif(slots[0] != "-"):
+	    booked = slots[0]
+	    if(booked[:-1] == plate):
+	        display.lcd_display_string("Slot:A1", 1)
+		    count += 1
+		    display.lcd_display_string(plate, 2)
+		    publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(plate) +'}', hostname="thingsboard.cloud", auth = {'username':"4Zdi7c8BlbQB7nL1fLpq", 'password':""})
+		
+	elif(slots[1] != "-"):
+	    booked = slots[1]
+	    if(booked[:-1] == plate):
+	        display.lcd_display_string("Slot:A2", 1)
+		    count += 1
+		    display.lcd_display_string(plate, 2)
+		    publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(plate) +'}', hostname="thingsboard.cloud", auth = {'username':"yUYqesVqB0GBThmr1U4h", 'password':""})   
+		   
+
         elif(slots[0] == "-" and slots[1] =="-"):
             num = r.randint(0,1)
             if(num == 0):
@@ -187,7 +204,3 @@ while True:
         
     if(count < 2):
         emailSend = False
-        
-        
-
-            
