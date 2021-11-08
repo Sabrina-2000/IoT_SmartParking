@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+    
+    .bg {
+      /* The image used */
+      background-image: url("https://i.pinimg.com/originals/0d/c5/fc/0dc5fc8aaa22eda09fec74426c644e1f.png");
+    
+      /* Full height */
+      height: 100%; 
+      
+    
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0.64;
+      padding:10%;
+      padding-top: 20%;
+      text-align: center;
+    }
+
+    .ct {
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 500%;
+    align-self: center;
+    letter-spacing: 10px;
+    margin-top: 100px;
+    opacity:0.84;
+    }
+
+    button{
+      width:200px;
+      padding: 15px 0;
+      text-align: center;
+      margin:20px 10px;
+      border-radius:25px;
+      font-weight: bold;
+      border: 2px solid white;
+      font-size: 150%;
+      background:transparent;
+      color:white;
+      cursor: pointer;
+      position:relative;
+      overflow: hidden;
+
+    }
+
+    .bspan{
+      background: red;
+      height: 100%;
+      width:0;
+      border-radius: 25px;
+      position:absolute;
+      left:0;
+      bottom:0;
+      z-index:-1;
+      transition:0.5s;
+    }
+
+    button:hover .bspan{
+      width:100%;
+    }
+
+    button:hover{
+      border:2px solid #009688;
+      color:white;
+
+    }
+
+    .content {
+      /* The image used */
+      background-image: url("https://i.pinimg.com/236x/e6/ff/a8/e6ffa8b050d4c09b429ab56f6edadaeb--surfy-vertical.jpg");
+    
+      /* Full height */
+      height: auto; 
+      
+    
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0.64;
+      padding:10%;
+      padding-top: 20%;
+      text-align: center;
+    }
+
+
+    h1 {
+      color: black;
+      font-size: 500%;
+      text-align: center;
+    }
+
+    .DATA{
+      color:white;
+      font-size:110%;
+    }
+
+    form{
+    width: 50%;
+    margin: auto;
+    }   
+        
+    form p{
+      color:white;
+    }
+    /*change the legend color*/
+    legend{
+      color:black;
+    }
+
+    /*change the size of the legend*/
+    legend{
+      font-size:2em;
+    }
+
+    .submitbooking{
+      color:white;
+      background-color:red;
+      border-radius:10px;
+      font-size: 200%;
+      padding:2%;
+      border: 2px solid green;
+    }
+
+    .submitbooking:hover{
+      background-color:green;
+      border: 2px solid red;
+    }
+
+    .cancelbooking{
+      color:white;
+      background-color:red;
+      border-radius:10px;
+      font-size: 200%;
+      padding:2%;
+      border: 2px solid green;
+    }
+
+    .cancelbooking:hover{
+      background-color:green;
+      border: 2px solid red;
+    }
+
+      
+    a.top:link, a.top:visited {
+      background-color:black;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration:none;
+      display: inline-block;
+      border-radius: 10px;
+      margin-top: 10px;
+      align-self: right;
+
+    }
+
+    a.top:hover, a.top:active {
+      background-color: black;
+      opacity:0.84;
+      border-color: black;
+      border-width: 10px;
+    }
+  
+  </style>
+  </head>
+
+  <body>
+
+  <div class="bg" id="bg">
+    <span class="ct" id="ct">IoT Smart Parking System</span><br>
+    <!--<a href="#Booking">Book Now</a>-->
+    <a href="#Booking"><button type="button"><span class="bspan"></span>Book Now</button></a>
+  </div>
+
+  <div class="content">
+  <h1 id="Booking">Car Park Booking</h1>
+  <p class="DATA">Available slot: 2</p>
+  <p class="DATA">Vechile count: 0</p>
+
+
+  <form action="http://www.foo.com" method="POST">
+    
+  <!--<input type="text" id="plate" name="plate" oninput="myFunction()" Placeholder="Car Plate"><br><br>-->
+  <!-- <input type="text" id="plate" name="plate" pattern=".*#$" Placeholder="Car Plate#" title="End with a '#'" required><br><br>-->
+  <!-- <p id="demo"></p> -->
+
+  <fieldset>
+    <legend>Booking Info</legend>
+      <p>
+        <label>Name: <br>
+          <input type="text" id="name" name="name" Placeholder="Name"></label>
+      </p>
+      <p>
+        <label>Phone Number:<br>
+          <input type="tel" id="hp" name="hp" Placeholder="PhoneNumber"  maxlength="10">
+        </label>
+      </p>
+      <p>
+        <label>Parking Slot:<br>
+          <input type="text" id="slot" name="slot" Placeholder="Parking slot">
+        </label>
+      </p>
+      <p>
+        <label>Car Plate Number:<br>
+          <input type="text" id="plate" name="plate" pattern=".*#$" Placeholder="Car Plate#" title="End with a '#'" required>
+        </label>
+      </p>
+      
+    </fieldset><br>
+    
+    <input type="submit" value="Book Lo !" id="submitbooking" class="submitbooking">
+    <input type="reset" value="Cancel !" id="cancelbooking" class="cancelbooking">
+  </form>
+  <a href="#bg" id="top" class="top">&#8607; Back to the top</a>
+
+  <div>
+
+
+
+  <!--<script>
+  function myFunction() {
+    var x = document.getElementById("plate").value;
+    document.getElementById("demo").innerHTML = "You wrote: " + x+"#";
+  }
+  </script> -->
+
+  </body>
+</html>
