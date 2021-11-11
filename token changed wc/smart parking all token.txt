@@ -1,0 +1,73 @@
+smart 1 
+
+S1_Slot_B1 (device id:)fbf9dee0-3d1f-11ec-b286-536c9e21a8b1
+--134--142-- S1_Slot_B1 (access token:)nXNiSJDI52nOQqiTy6F0
+
+S1_Lock_A2 (device id:)97247780-3a10-11ec-b286-536c9e21a8b1
+S1_Lock_A2 (access token:)X6JvGCVB5heYKmmAI14e
+
+S1_Lock_A1 (device id:)8ac3fab0-3a10-11ec-b286-536c9e21a8b1
+S1_Lock_A1 (access token:)vDMIdEYH3VORW2aiwDxV
+
+S1_Door (device id:)227910d0-3a10-11ec-a047-556e8dbef35c
+S1_Door (access token:)9Y7Iua6Vs10SgxmzHavr
+
+S1_Power (device id:)e70074d0-3a0f-11ec-a047-556e8dbef35c
+S1_Power (access token:)fskH2JmjATuOuBszxkuc
+
+S1_B2_Status (device id:)077b0030-3304-11ec-a9e6-556e8dbef35c
+S1_B2_Status (access token:)RBoS4us5iKtmHthD1kAA
+
+S1_Available_Slot (device id:)ea764260-3303-11ec-a9e6-556e8dbef35c
+--109--191-- S1_Available_Slot (access token:)l2W9Yt6qDEhBoTVj1FVB
+
+S1_Count (device id:)d6a0e5b0-3303-11ec-a9e6-556e8dbef35c
+--110--192-- S1_Count (access token:)xHyIFxSBeq87pbF3671m
+
+S1_Slot_A2 (device id:)c362e700-3303-11ec-a9e6-556e8dbef35c
+--128--158--170--189-- S1_Slot_A2(access token:)yUYqesVqB0GBThmr1U4h
+
+S1_Slot_A1 (device id:)b24bbff0-3303-11ec-b286-536c9e21a8b1
+--122--150--166--181-- S1_Slot_A1 (access token:)4Zdi7c8BlbQB7nL1fLpq
+
+total:14 publish
+
+
+smart 2 
+
+
+S2_Slot_B1 (device id:)228c8f30-3d39-11ec-a047-556e8dbef35c
+--134--142-- S2_Slot_B1 (access token:)igrPUeCoCNRaxenzIfyn
+
+S2_Lock_A2 (device id:)cb905ee0-3b0e-11ec-a047-556e8dbef35c
+S2_Lock_A2 (access token:)9YjPVtMfhw7YV7UmLuOd
+
+S2_Lock_A1 (device id:)c3512a20-3b0e-11ec-a047-556e8dbef35c
+S2_Lock_A1 (access token:)jyvbvkqXz57judbqu1bv
+
+S2_Door (device id:)9f164320-3b0e-11ec-a047-556e8dbef35c
+S2_Door (access token:)HyXNzBXPssYL7hJUTFSZ
+
+S2_Power (device id:)d83b2b20-3b0e-11ec-a047-556e8dbef35c
+S2_Power (access token:)69Y6Y0IUhCbcBaLJKIEg
+
+S2_B2_Status (device id:)2bca3160-3497-11ec-b286-536c9e21a8b1
+S2_B2_Status (access token:)ApayAUHvgXIYS4Jwz7D1
+
+S2_Available (device id:)c905c4e0-3496-11ec-a047-556e8dbef35c
+--109--191-- S2_Available (access token:)GuIKhZkC23Vax6lXweiC
+
+S2_Count (device id:)ad65ee40-3496-11ec-b286-536c9e21a8b1
+--110--192-- S2_Count (access token:)bPtWLBI9knv9dr95T1TG
+
+S2_Slot_A2 (device id:)03692050-3497-11ec-a047-556e8dbef35c
+--128--158--170--189-- S2_Slot_A2(access token:)1ngjHTxUSiI4Om1pD3hW
+
+S2_Slot_A1 (device id:)c3512a20-3b0e-11ec-a047-556e8dbef35c
+-122--150--166--181-- S2_Slot_A1 (access token:)jyvbvkqXz57judbqu1bv
+
+total:14 publish
+
+
+
+
