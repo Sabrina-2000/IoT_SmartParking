@@ -18,7 +18,6 @@ int basementLed = 6;
 unsigned int pinStatus = 0;
 long distance;
 int secondslot;
-bool power = true;
 
 void setup() {
   // put your setup code here, to run once:
@@ -164,21 +163,6 @@ void DoorSensor()
   }
 }
 
-void Power()
-{
-  if(power == false)
-  {
-    servo.write(90);
-    digitalWrite(lockLed, HIGH);
-    digitalWrite(lockLed2, HIGH);
-  }
-  else{
-    servo.write(0);
-    digitalWrite(lockLed, LOW);
-    digitalWrite(lockLed2, LOW);
-  }
-}
-
 void reciever()
 {
   if(Serial.available() > 0)
@@ -195,31 +179,9 @@ void reciever()
         break;
       case 3:
         digitalWrite(basementLed, HIGH); //open basement 2
-        Serial.println("B2: 1");
         break;
       case 4:
         digitalWrite(basementLed, LOW);//close basement 2
-        Serial.println("B2: 0");
-        break;
-      case 5:
-        digitalWrite(lockLed, HIGH);//slot A1 parking lock drop
-        break;
-      case 6:
-        digitalWrite(lockLed, LOW);//slot A1 parking lock rise
-        break;
-      case 7:
-        digitalWrite(lockLed2, HIGH);//slot A2 parking lock drop
-        break;
-      case 8:
-        digitalWrite(lockLed2, LOW);//slot A2 parking lock rise
-        break;
-      case 9:
-        power = true;
-        Power();
-        break;
-      case 10:
-        power = false;
-        Power();
         break;
       default:
         break;
