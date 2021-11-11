@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <title>Booking System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     body, html {
@@ -186,8 +188,12 @@
 
   <div class="content">
   <h1 id="Booking">Car Park Booking</h1>
-  <p class="DATA">Available slot: 2</p>
-  <p class="DATA">Vechile count: 0</p>
+  <p class="DATA">Available slot: 
+      {%for x in displaySlot%}
+    <span>{{x}}</span>
+      {% endfor %}
+  </p>
+  <p class="DATA">Vechile count: {{count}}</p>
 
 
   <form action="http://www.foo.com" method="POST">
@@ -204,23 +210,23 @@
       </p>
       <p>
         <label>Phone Number:<br>
-          <input type="tel" id="hp" name="hp" Placeholder="PhoneNumber"  maxlength="10">
+          <input type="tel" id="hp" name="phone" Placeholder="PhoneNumber"  maxlength="10">
         </label>
       </p>
       <p>
         <label>Parking Slot:<br>
-          <input type="text" id="slot" name="slot" Placeholder="Parking slot">
+          <input type="text" id="slot" name="slotNum" Placeholder="Parking slot">
         </label>
       </p>
       <p>
         <label>Car Plate Number:<br>
-          <input type="text" id="plate" name="plate" pattern=".*#$" Placeholder="Car Plate#" title="End with a '#'" required>
+          <input type="text" id="plate" name="plate">
         </label>
       </p>
       
     </fieldset><br>
     
-    <input type="submit" value="Book Lo !" id="submitbooking" class="submitbooking">
+    <input type="submit" value="Book!" id="submitbooking" class="submitbooking">
     <input type="reset" value="Cancel !" id="cancelbooking" class="cancelbooking">
   </form>
   <a href="#bg" id="top" class="top">&#8607; Back to the top</a>
