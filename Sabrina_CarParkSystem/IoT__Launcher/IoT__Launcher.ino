@@ -98,27 +98,27 @@ void SlotSensor()
   {
     //car is parked, parking lock rise
     Serial.print("Slot Sensor: ");
-    Serial.println("1");
+    Serial.println("parked");
     delay(3000);
     digitalWrite(lockLed, LOW);
   }
   else if(distance <= 3)
   {
     //ultrasonic sensor is cover by something, parking lock rise 
-    Serial.println("Vechile not detected (ERROR) Pls check!!");
+    Serial.println("Error");
     digitalWrite(lockLed, LOW);
   }
   else if(distance >= 10 && distance <= 20)
   {
     //car leave, parking lock rise
-    Serial.println("Leave");
+    Serial.println("leave");
     delay(3000);
     digitalWrite(lockLed, LOW);
   }
   else
   {
     //car is not parked, parking lock rise
-    Serial.println("Car is not parked");
+    Serial.println("NA");
     digitalWrite(lockLed, LOW);
   }
 }
@@ -179,9 +179,23 @@ void reciever()
         break;
       case 3:
         digitalWrite(basementLed, HIGH); //open basement 2
+        Serial.println("B2: 1");
         break;
       case 4:
         digitalWrite(basementLed, LOW);//close basement 2
+        Serial.println("B2: 0");
+        break;
+      case 5:
+        digitalWrite(lockLed, HIGH);//slot A1 parking lock drop
+        break;
+      case 6:
+        digitalWrite(lockLed, LOW);//slot A1 parking lock rise
+        break;
+      case 7:
+        digitalWrite(lockLed2, HIGH);//slot A2 parking lock drop
+        break;
+      case 8:
+        digitalWrite(lockLed2, LOW);//slot A2 parking lock rise
         break;
       default:
         break;
