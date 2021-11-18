@@ -18,9 +18,9 @@ camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 30
 rawCapture = PiRGBArray(camera, size=(640, 480))
-server=smtplib.SMTP('smtp.gmail.com',587)
-server.starttls()
-server.login('iotsmartparking2021@gmail.com', 'smartparking2021')
+#server=smtplib.SMTP('smtp.gmail.com',587)
+#server.starttls()
+#server.login('iotsmartparking2021@gmail.com', 'smartparking2021')
 device = '/dev/ttyUSB0'
 arduino = serial.Serial(device, 9600)
 display = drivers.Lcd()
@@ -37,27 +37,29 @@ emailSend = False
 added = False
         
 def leaved(plate):
-    global count, available, slots
+    global count, available, slots, s1status, s2status
     if(slots[0] == plate):
         slots[0] = "-"
         available += 1
         count -= 1
         display.lcd_display_string("Leaved:", 1)
-        display.lcd_display_string(str(plate), 1)
+        display.lcd_display_string(str(plate), 2)
+        s1status = "-"
         return
     if(slots[1] == plate):
         slots[1] = "-"
         available += 1
         count -= 1
         display.lcd_display_string("Leaved:", 1)
-        display.lcd_display_string(str(plate), 1)
+        display.lcd_display_string(str(plate), 2)
+        s2status = "-"
         return
     if(slots[2] == plate):
         slots[2] = "-"
         available += 1
         count -= 1
         display.lcd_display_string("Leaved:", 1)
-        display.lcd_display_string(str(plate), 1)
+        display.lcd_display_string(str(plate), 2)
         return
     if(slots[0] != "-"):
         booked = slots[0]
@@ -76,6 +78,7 @@ def leaved(plate):
     
 def come(plate):
     global count, available, slots
+
     if(slots[0] == "-"):
         slots[0] = plate
         display.lcd_display_string("Slot:A1", 1)
@@ -84,7 +87,7 @@ def come(plate):
         display.lcd_display_string(plate, 2)
         return
         
-    if(slots[1] == "-"):
+    elif(slots[1] == "-"):
         slots[1] = plate
         display.lcd_display_string("Slot:A2", 1)
         available -= 1
@@ -266,6 +269,14 @@ while True:
             available -= 1
             count += 1
             display.lcd_display_string(plate, 2)
+        elif(slots[0] == plate):
+            leaved(plate)
+        elif(slots[1] == plate):
+            leaved(plate)
+        elif(slots[0][:-1] == plate):
+            leaved(plate)
+        elif(slots[1][:-1] == plate):
+            leaved(plate)
         elif(slots[0] == "-"):
             come(plate)
         elif(slots[1] == "-"):
@@ -287,7 +298,8 @@ while True:
             cursor.execute("INSERT INTO record (Counts, Availables, SlotA1, SlotA2, SlotB1) VALUES ('%s','%s','%s','%s','%s')" %(count, available, slots[0], slots[1], slots[2])) 
             dbConn.commit()
             cursor.close()
-        
+    
+    action = 0
     publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(slots[2]) +'}', hostname="thingsboard.cloud", auth = {'username':"nXNiSJDI52nOQqiTy6F0", 'password':""})
     publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(slots[0]) +'}', hostname="thingsboard.cloud", auth = {'username':"4Zdi7c8BlbQB7nL1fLpq", 'password':""})
     publish.single(topic="v1/devices/me/telemetry", payload='{"status":' + str(s1status) +'}', hostname="thingsboard.cloud", auth = {'username':"4Zdi7c8BlbQB7nL1fLpq", 'password':""})
@@ -296,12 +308,12 @@ while True:
     publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(available) +'}', hostname="thingsboard.cloud", auth = {'username':"l2W9Yt6qDEhBoTVj1FVB", 'password':""})
     publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(count) +'}', hostname="thingsboard.cloud", auth = {'username':"xHyIFxSBeq87pbF3671m", 'password':""})
     display.lcd_display_string("Available:" + str(available), 1)
-    if(count >= 1 and emailSend == False):
-        server.sendmail('iotsmartparking2021@gmail.com', 'iotsmartparking2021@gmail.com',"Alert!!! Open Basement 2!!!")
-        emailSend = True
+    #if(count >= 1 and emailSend == False):
+        #server.sendmail('iotsmartparking2021@gmail.com', 'iotsmartparking2021@gmail.com',"Alert!!! Open Basement 2!!!")
+        #emailSend = True
         
-    if(count < 1):
-        emailSend = False
+    #if(count < 1):
+        #emailSend = False
       
     
         
