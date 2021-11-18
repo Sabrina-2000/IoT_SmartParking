@@ -18,9 +18,9 @@ camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 30
 rawCapture = PiRGBArray(camera, size=(640, 480))
-#server=smtplib.SMTP('smtp.gmail.com',587)
-#server.starttls()
-#server.login('iotsmartparking2021@gmail.com', 'smartparking2021')
+server=smtplib.SMTP('smtp.gmail.com',587)
+server.starttls()
+server.login('iotsmartparking2021@gmail.com', 'smartparking2021')
 device = '/dev/ttyUSB0'
 arduino = serial.Serial(device, 9600)
 display = drivers.Lcd()
@@ -308,12 +308,12 @@ while True:
     publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(available) +'}', hostname="thingsboard.cloud", auth = {'username':"l2W9Yt6qDEhBoTVj1FVB", 'password':""})
     publish.single(topic="v1/devices/me/telemetry", payload='{"value":' + str(count) +'}', hostname="thingsboard.cloud", auth = {'username':"xHyIFxSBeq87pbF3671m", 'password':""})
     display.lcd_display_string("Available:" + str(available), 1)
-    #if(count >= 1 and emailSend == False):
-        #server.sendmail('iotsmartparking2021@gmail.com', 'iotsmartparking2021@gmail.com',"Alert!!! Open Basement 2!!!")
-        #emailSend = True
+    if(count >= 1 and emailSend == False):
+        server.sendmail('iotsmartparking2021@gmail.com', 'iotsmartparking2021@gmail.com',"Alert!!! Open Basement 2!!!")
+        emailSend = True
         
-    #if(count < 1):
-        #emailSend = False
+    if(count < 1):
+        emailSend = False
       
     
         
