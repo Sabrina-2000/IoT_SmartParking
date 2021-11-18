@@ -4,6 +4,7 @@ app = Flask(__name__, template_folder="templates")
 available = 3
 count = 0
 slots = ["-", "-","-"]
+status = "Book Failed"
 
 
 @app.route("/")
@@ -31,17 +32,21 @@ def index():
 
 @app.route("/", methods=['POST'])
 def getBooking():
+    global status, count, available
     name = request.form['name']
     phone = request.form['phone']
     slotNum = request.form['slotNum']
     plate = request.form['plate']
     if(slotNum.upper() == "A1"):
         slots[0] = plate + "@"
+        status = "Successfully Booked"
+        count += 1
+        available -= 1
     elif(slotNum.upper() == "A2"):
         slots[1] = plate + "@"
-    global count, available
-    count += 1
-    available -= 1
+        status = "Successfully Booked"
+        count += 1
+        available -= 1
     
     dbConn = MySQLdb.connect("localhost","pi","","parkingSystem_db") or dle("Could not connect to database") 
     print(dbConn)
@@ -51,7 +56,7 @@ def getBooking():
         dbConn.commit()
         cursor.close()
     
-    return render_template('bookInfo.html', name=name, phone=phone, slotNum=slotNum, plate=plate)
+    return render_template('bookInfo.html', name=name, phone=phone, slotNum=slotNum, plate=plate, status=status)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8080) 
